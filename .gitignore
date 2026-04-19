@@ -1,0 +1,103 @@
+# ============================================================
+# Go
+# ============================================================
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Coverage output
+*.out
+coverage.out
+coverage.html
+
+# Go workspace file
+go.work
+go.work.sum
+
+# Dependency directories
+vendor/
+
+# Build output
+/bin/
+/dist/
+/build/
+cli/*/bin/
+cli/*/dist/
+skills/*/bin/lybel-docs
+skills/*/bin/lybel-docs.exe
+release-assets/
+
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# ============================================================
+# Windows
+# ============================================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ============================================================
+# Linux
+# ============================================================
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ============================================================
+# IDEs / Editors
+# ============================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.iml
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
+
+# ============================================================
+# Environment / secrets
+# ============================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets.json
+
+# ============================================================
+# Logs & temp
+# ============================================================
+*.log
+logs/
+tmp/
+temp/
+.cache/
+
+# ============================================================
+# Node (if any tooling is added later)
+# ============================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
