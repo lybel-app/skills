@@ -12,6 +12,8 @@ allowed-tools: |
   mcp__atlassian__getConfluenceSpaces
   mcp__atlassian__search
   Bash(./bin/lybel-docs *)
+  Read
+  Write
 ---
 
 # Lybel Docs — Confluence Knowledge Base Assistant
@@ -83,17 +85,58 @@ This skill is deliberately **timeless**. It stores no specific names (advisors, 
    - **Fallback:** `contentFormat: "markdown"` in the MCP call.
 5. `createConfluencePage` with the correct `parentId`. Return the final URL.
 
-### 3. List — "quais aceleradoras temos" / "lista parceiros"
+### 3. Update — "atualiza a página de X" / "adiciona seção Y"
+
+**Never build ADF by hand, and never use `contentFormat: "markdown"` to update a page with macros** (TOC, Expand, panel). Markdown update flattens macros and silently destroys structure.
+
+Use `./bin/lybel-docs edit` — it reads current ADF, applies a section-level operation, and returns new ADF. Macros outside the touched section are preserved verbatim.
+
+**Workflow** (preferred path, binary available):
+
+1. Fetch the current page in ADF:
+   ```
+   mcp__atlassian__getConfluencePage(cloudId=..., pageId=..., contentFormat="adf")
+   ```
+2. Extract the `body` JSON from the response and save to a temp file (e.g. `/tmp/lybel-edit/current.json`).
+3. Write the new content as markdown fragment to another temp file (e.g. `/tmp/lybel-edit/fragment.md`). For section replacement, include the heading in the fragment.
+4. Run one operation:
+   ```
+   ./bin/lybel-docs edit -i /tmp/lybel-edit/current.json \
+     --append /tmp/lybel-edit/fragment.md > /tmp/lybel-edit/new.json
+
+   ./bin/lybel-docs edit -i /tmp/lybel-edit/current.json \
+     --replace-section "📇 Page ID Index" /tmp/lybel-edit/fragment.md > /tmp/lybel-edit/new.json
+
+   ./bin/lybel-docs edit -i /tmp/lybel-edit/current.json \
+     --insert-after "🔍 Research" /tmp/lybel-edit/fragment.md > /tmp/lybel-edit/new.json
+
+   ./bin/lybel-docs edit -i /tmp/lybel-edit/current.json \
+     --delete-section "TODO antigo" > /tmp/lybel-edit/new.json
+   ```
+5. Send the result back with `contentFormat: "adf"`:
+   ```
+   mcp__atlassian__updateConfluencePage(
+     cloudId=..., pageId=..., title=<same>, contentFormat="adf",
+     body=<contents of /tmp/lybel-edit/new.json>,
+     versionMessage="<what changed>"
+   )
+   ```
+
+**Section matching**: exact case-sensitive match on trimmed heading text. First match wins. Section = heading + all following top-level nodes up to (but not including) the next heading of equal-or-higher level.
+
+**When the binary is NOT available**: fall back to `contentFormat: "markdown"` ONLY if the page has no macros to preserve. If it does (TOC, Expand, panel, status), warn the user that the update may destroy structure and ask them to install the CLI first.
+
+### 4. List — "quais aceleradoras temos" / "lista parceiros"
 
 1. Identify the category via the Home.
 2. Use `getPagesInConfluenceSpace` or `getConfluencePageDescendants` on the category parent.
 3. Return as bullets ordered by title or status.
 
-### 4. Status — "qual o status de X"
+### 5. Status — "qual o status de X"
 
 See Workflow 5 in `reference/workflows.md` (labels + properties). Always cite the date of the last update.
 
-### 5. Add relationship — "adiciona advisor/parceiro/investidor X"
+### 6. Add relationship — "adiciona advisor/parceiro/investidor X"
 
 1. Verify in the Home which department/category is correct (advisor ≠ investor ≠ commercial partner).
 2. Confirm template (Advisor Sheet, Investor Sheet, Partner Sheet).
@@ -102,8 +145,9 @@ See Workflow 5 in `reference/workflows.md` (labels + properties). Always cite th
 ## Tool preferences
 
 - **MCP Atlassian** is priority for everything (search, read, create, update).
-- **`./bin/lybel-docs adf`** for rich pages (tables, expand, TOC, status macros) — only if the binary is installed at `./bin/`.
-- **Fallback:** `contentFormat: "markdown"` when the binary doesn't exist. Limitation: loses some native macros, but works.
+- **`./bin/lybel-docs adf`** for rich new pages (tables, expand, TOC, status macros) — only if the binary is installed at `./bin/`.
+- **`./bin/lybel-docs edit`** for updating existing pages without destroying macros (append, insert, replace-section, delete-section). See Workflow 3.
+- **Fallback:** `contentFormat: "markdown"` when the binary doesn't exist. Limitation: loses macros, so use only for plain-text pages.
 - **CQL:** prefer `title ~` before `text ~`. **Always** filter by `space = "lybel"`.
 - **Batch:** multiple reads in parallel within the same tool-call block.
 
