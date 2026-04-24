@@ -142,6 +142,35 @@ See Workflow 5 in `reference/workflows.md` (labels + properties). Always cite th
 2. Confirm template (Advisor Sheet, Investor Sheet, Partner Sheet).
 3. Create under the correct parent. Always confirm location before.
 
+## Editorial patterns for Lybel pages
+
+Every **decision**, **proposal**, **strategy**, or **spec** page must follow two conventions. Index pages, reference pages and glossaries can skip them.
+
+### Pattern 1 — Page header
+
+Start every page with a small header block (quote/callout) containing:
+
+> **Contexto:** (one-line summary of what the page is about)
+> **Criado em:** YYYY-MM-DD | **Atualizado em:** YYYY-MM-DD | **Criado por:** [nome]
+
+When updating a page, bump the "Atualizado em" date. On first creation, author comes from the current user (confirm if unknown).
+
+### Pattern 2 — Contexto → Problema → Solução structure
+
+For decision/proposal/strategy pages, organize the body around three sections:
+
+1. **Contexto** — where the page comes from, which project/moment it serves, what bigger scope it sits in
+2. **Problema** — what is being solved, what hurts, what constraints exist
+3. **Solução (possível)** — proposed approach, options, tradeoffs, concrete scope
+
+See `reference/templates.md` → "Decision / Proposal / Strategy" template for the canonical form.
+
+**Why this matters**: the knowledge base becomes predictable — any reader (human or AI) knows where to find the motivation, the pain, and the plan without re-reading everything. Reduces onboarding cost and review time.
+
+**When creating a page**: apply these patterns by default; deviate only if the page type is clearly an index/reference/glossary.
+
+**When updating an existing page** that violates the patterns: offer the user a refactor alongside the content change — don't silently rewrite structure.
+
 ## Tool preferences
 
 - **MCP Atlassian** is priority for everything (search, read, create, update).

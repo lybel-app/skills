@@ -10,6 +10,29 @@ When creating a new page under a category, use the corresponding template below.
 
 ---
 
+## Universal page header (apply to every new page)
+
+Every page starts with a small header block (quote/callout) BEFORE any content heading:
+
+```markdown
+> **Contexto:** (one-line summary of what the page is about)
+> **Criado em:** YYYY-MM-DD | **Atualizado em:** YYYY-MM-DD | **Criado por:** [nome]
+```
+
+Example:
+
+```markdown
+> **Contexto:** Proposta de MVP da Fase 1 da Lybel.
+> **Criado em:** 2026-04-08 | **Atualizado em:** 2026-04-24 | **Criado por:** Diego C. Rodrigues
+```
+
+**Rules**:
+- Apply to all pages EXCEPT index/reference/glossary pages
+- When updating: bump "Atualizado em" date
+- When creating: confirm author if unknown (don't invent)
+
+---
+
 ## 1. Template — Advisor / Consultor (individual)
 
 **Use when:** adding a lawyer, accountant, consultant, advisor or any external person who helps us.
@@ -366,8 +389,73 @@ Referência: páginas de JTBD e Persona (links — buscar pageIds atuais via Hom
 
 ---
 
+## 8. Template — Decision / Proposal / Strategy
+
+**Use when:** documenting any decision, proposal, strategy, spec, risk analysis, or viability assessment. This is the **default template** for sub-pages of Estratégia & Visão, Produto specs, Fase/MVP pages, and any analytical/decision-making page.
+**Parent:** whatever makes sense in the taxonomy (see Home).
+**Central rule:** **Contexto → Problema → Solução**, always.
+
+**Title:** short, specific — e.g. "MVP Lybel Pocket", "Risco: commoditização por protocolos agênticos", "Proposta de KYC ultra-leve".
+
+```markdown
+> **Contexto:** (one-line summary)
+> **Criado em:** YYYY-MM-DD | **Atualizado em:** YYYY-MM-DD | **Criado por:** [nome]
+
+## Contexto
+
+(2-4 parágrafos — onde a página nasce, qual projeto/decisão/momento, qual o escopo maior em que ela vive. Se essa decisão está ligada a outra página, linka.)
+
+## Problema
+
+(O que está sendo resolvido, qual a dor, quais as restrições. Use bullets se ajudar a ler rápido.)
+
+- Restrição 1
+- Restrição 2
+- Dor concreta
+
+## Solução (possível)
+
+(A proposta. Pode ser:
+- Única e concreta — com escopo, stack, métricas
+- Múltipla — comparativo de opções com tradeoffs
+
+Se for única, detalha escopo/fluxo/decisões-chave.
+Se for múltipla, tabela comparativa + recomendação.)
+
+### Escopo (se solução única)
+(...)
+
+### Opções (se solução múltipla)
+
+| Opção | Prós | Contras | Quando usar |
+|---|---|---|---|
+| A | | | |
+| B | | | |
+
+## Decisões abertas
+
+- [ ] Pergunta 1 que precisa de resposta
+- [ ] Pergunta 2 que precisa de resposta
+
+## Referências
+
+- [Página relacionada 1](url)
+- [Página relacionada 2](url)
+
+## Histórico
+
+* YYYY-MM-DD: página criada
+* YYYY-MM-DD: (próxima atualização significativa — descrever mudança)
+```
+
+**When NOT to use this template**: indices, glossaries, lists of contacts/partners/tools, pure reference pages. Those have their own templates above (Advisor, Investor, Tech Vendor, etc.) ou seguem formato de índice.
+
+---
+
 ## Universal checklist before saving any page
 
+- [ ] **Page header** com `Contexto`, `Criado em`, `Atualizado em`, `Criado por` (exceto índices/referências)
+- [ ] **Contexto → Problema → Solução** se for página de decisão/proposta/estratégia
 - [ ] Title follows the category convention (see each template above)
 - [ ] Correct parent (check taxonomy.md / Home if in doubt)
 - [ ] `## Histórico` section present with creation date
