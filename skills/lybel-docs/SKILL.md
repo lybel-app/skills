@@ -171,6 +171,17 @@ See `reference/templates.md` → "Decision / Proposal / Strategy" template for t
 
 **When updating an existing page** that violates the patterns: offer the user a refactor alongside the content change — don't silently rewrite structure.
 
+### Pattern 3 — Clarity for outside readers
+
+Pages are read by people who weren't in the conversation that generated them. Before saving:
+
+- **Technical jargon** (Merchant of Record, Variante A, MCP, UCP, commission fee, postback, etc.) must be explained briefly on first use OR linked to a page that explains. Don't assume context.
+- **Internal labels** (Variante A, Onda 2, v0.1) should come with a short gloss when first introduced on a page.
+- **References to other work** (research, analysis, previous decisions) must be linked to the actual Confluence page — never just mention "analisamos X" without linking X.
+- **Balance**: don't over-explain the obvious (readers are smart, just not context-equipped). One short clause or parenthetical is usually enough. Prefer linking over inlining when the full explanation exists elsewhere.
+
+**Smell test**: if a new hire at the Lybel opens this page cold, will they understand it? If not, add one link or one half-sentence.
+
 ## Tool preferences
 
 - **MCP Atlassian** is priority for everything (search, read, create, update).

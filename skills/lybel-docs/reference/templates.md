@@ -456,6 +456,8 @@ Se for múltipla, tabela comparativa + recomendação.)
 
 - [ ] **Page header** com `Contexto`, `Criado em`, `Atualizado em`, `Criado por` (exceto índices/referências)
 - [ ] **Contexto → Problema → Solução** se for página de decisão/proposta/estratégia
+- [ ] **Jargão explicado ou linkado** (Merchant of Record, MCP, Variante A, v0.1, commission fee, postback — tudo que um leitor novo não entenderia deve ter uma linha ou um link)
+- [ ] **Referências linkadas** — toda menção a outra decisão/análise/research deve linkar a página Confluence correspondente, não só citar
 - [ ] Title follows the category convention (see each template above)
 - [ ] Correct parent (check taxonomy.md / Home if in doubt)
 - [ ] `## Histórico` section present with creation date
