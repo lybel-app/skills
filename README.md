@@ -1,5 +1,18 @@
 # Lybel Skills
 
+> [!IMPORTANT]
+> **These skills have moved to [`diegoclair/harness`](https://github.com/diegoclair/harness).**
+>
+> This repository is retired and no longer receives changes. Everything here — plus the
+> `unbiased-reviewer` agent and the `dev-loop` / `implementation-plan` skills — is maintained there.
+>
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/diegoclair/harness/main/install.sh | sh -s -- install confluence-docs jira-tickets
+> ```
+>
+> Existing installs keep working: the one-liners here forward to the new repo, and
+> `<skill> update` migrates you automatically. Past releases stay downloadable.
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![confluence-docs](https://img.shields.io/github/v/release/diegoclair/skills?filter=confluence-v*&color=11C47E&label=confluence-docs)](https://github.com/diegoclair/skills/releases?q=tag%3Aconfluence-v)
 [![jira-tickets](https://img.shields.io/github/v/release/diegoclair/skills?filter=jira-v*&color=11C47E&label=jira-tickets)](https://github.com/diegoclair/skills/releases?q=tag%3Ajira-v)

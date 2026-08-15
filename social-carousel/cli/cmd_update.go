@@ -15,10 +15,10 @@ import (
 // the "carousel-v*" tag prefix so sibling-skill releases are ignored.
 func runUpdate(args []string, stdout, stderr io.Writer) (int, error) {
 	const (
-		repoOwnerRepo = "diegoclair/skills"
+		repoOwnerRepo = "diegoclair/harness"
 		tagPrefix     = "carousel-v"
-		installShURL  = "https://raw.githubusercontent.com/diegoclair/skills/main/social-carousel/install/install.sh"
-		installPS1URL = "https://raw.githubusercontent.com/diegoclair/skills/main/social-carousel/install/install.ps1"
+		installShURL  = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/social-carousel/install/install.sh"
+		installPS1URL = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/social-carousel/install/install.ps1"
 	)
 
 	var checkOnly bool

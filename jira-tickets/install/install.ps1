@@ -4,11 +4,11 @@
 # The work is done by the `skills` installer binary; this only forwards the
 # skill name to it.
 #
-#   iwr -useb https://raw.githubusercontent.com/diegoclair/skills/main/jira-tickets/install/install.ps1 | iex
+#   iwr -useb https://raw.githubusercontent.com/diegoclair/harness/main/jira-tickets/install/install.ps1 | iex
 
 $ErrorActionPreference = 'Stop'
 
-$Repo = if ($env:SKILL_REPO) { $env:SKILL_REPO } else { 'diegoclair/skills' }
+$Repo = if ($env:SKILL_REPO) { $env:SKILL_REPO } else { 'diegoclair/harness' }
 $RootUrl = "https://raw.githubusercontent.com/$Repo/main/install.ps1"
 
 $Bootstrap = Join-Path $env:TEMP "skills-bootstrap-$([guid]::NewGuid()).ps1"

@@ -12,9 +12,9 @@ import (
 
 func runUpdate(args []string, stdout, stderr io.Writer) (int, error) {
 	const (
-		repoOwnerRepo = "diegoclair/skills"
-		installShURL  = "https://raw.githubusercontent.com/diegoclair/skills/main/confluence-docs/install/install.sh"
-		installPS1URL = "https://raw.githubusercontent.com/diegoclair/skills/main/confluence-docs/install/install.ps1"
+		repoOwnerRepo = "diegoclair/harness"
+		installShURL  = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/confluence-docs/install/install.sh"
+		installPS1URL = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/confluence-docs/install/install.ps1"
 		// exit 10 is reserved for "update available" so scripts/CI can
 		// distinguish "all good" (0) from "needs upgrade" without parsing.
 		exitUpdateAvailable = 10

@@ -12,10 +12,10 @@ import (
 
 func runUpdate(args []string, stdout, stderr io.Writer) (int, error) {
 	const (
-		repoOwnerRepo = "diegoclair/skills"
+		repoOwnerRepo = "diegoclair/harness"
 		tagPrefix     = "jira-v"
-		installShURL  = "https://raw.githubusercontent.com/diegoclair/skills/main/jira-tickets/install/install.sh"
-		installPS1URL = "https://raw.githubusercontent.com/diegoclair/skills/main/jira-tickets/install/install.ps1"
+		installShURL  = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/jira-tickets/install/install.sh"
+		installPS1URL = "https://raw.githubusercontent.com/diegoclair/harness/main/skills/jira-tickets/install/install.ps1"
 	)
 
 	var checkOnly bool

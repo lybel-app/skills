@@ -11,7 +11,7 @@
 
 set -e
 
-REPO="${SKILL_REPO:-diegoclair/skills}"
+REPO="${SKILL_REPO:-diegoclair/harness}"
 ROOT_URL="https://raw.githubusercontent.com/$REPO/main/install.sh"
 
 # Version pins used the SKILL_VERSION / <SKILL>_VERSION env vars; the
